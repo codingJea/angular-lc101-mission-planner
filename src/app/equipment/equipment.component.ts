@@ -1,3 +1,4 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -27,5 +28,12 @@ export class EquipmentComponent implements OnInit {
    ngOnInit() { }
 
    // Code your addItem function here:
-   
+  addItem(equipment: object[]){
+    console.log(equipment);
+    this.cargoHold.push(equipment);
+    this.cargoMass += equipment['mass'];
+
+    let limit = this.maximumAllowedMass - this.cargoMass;
+    return(limit < 200);
+  } 
 }
